@@ -1,0 +1,10 @@
+services:
+  backend:
+    image: 767398103411.dkr.ecr.ap-northeast-2.amazonaws.com/kono-backend:latest
+    container_name: backend
+    ports:
+      - "8081:8081"
+    restart: always
+    env_file: /home/ubuntu/backend/.env  # EC2에 있는 .env
+    volumes:
+      - /home/ubuntu/backend/application.yml:/app/application.yml
