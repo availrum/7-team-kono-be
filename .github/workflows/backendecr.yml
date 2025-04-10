@@ -36,6 +36,9 @@ jobs:
       - name: Debug - Show directory structure
         run: ls -R
 
+      - name: Rename built jar to app.jar
+        run: cp build/libs/*.jar app.jar
+
       - name: Build, tag, and push Docker image to ECR
         run: |
           IMAGE_URI=767398103411.dkr.ecr.ap-northeast-2.amazonaws.com/kono-backend:latest
