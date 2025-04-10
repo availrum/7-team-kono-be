@@ -36,8 +36,11 @@ jobs:
       - name: Debug - Show directory structure
         run: ls -R
 
-      - name: Rename built jar to app.jar
-        run: cp build/libs/*.jar app.jar
+      - name: Rename built jar to app.jar (exclude plain jar)
+        run: |
+          JAR_FILE=$(ls build/libs/*SNAPSHOT.jar | grep -v plain)
+          echo "Selected jar: $JAR_FILE"
+          cp "$JAR_FILE" app.jar
 
       - name: Build, tag, and push Docker image to ECR
         run: |
