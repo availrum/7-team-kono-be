@@ -19,8 +19,7 @@ jobs:
           java-version: '17'
 
       - name: Build Spring Boot app
-        #run: ./gradlew build -x test -x spotlessJavaCheck -x sentryBundleSourcesJava
-        run: ./gradlew build -PsentrySkip -x test -x spotlessJavaCheck
+        run: ./gradlew build -x test -x spotlessJavaCheck -x sentryBundleSourcesJava
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
