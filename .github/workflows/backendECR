@@ -18,6 +18,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Export SENTRY_AUTH_TOKEN for Sentry CLI
+        run: echo "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}" >> $GITHUB_ENV
+
       - name: Build Spring Boot app
         run: ./gradlew build -x test -x spotlessJavaCheck -x sentryBundleSourcesJava
 
